@@ -5,7 +5,7 @@ import TimeAndLocation from './components/TimeAndLocation';
 import TemperatureAndDetails from './components/TemperatureAndDetails';
 import Forecast from './components/Forecast';
 import getFormattedWeatherData from './services/weatherService';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -22,7 +22,7 @@ function App() {
 
       await getFormattedWeatherData({ ...query, units }).then((data) => {
         toast.success(
-          `Successfully fetched weather for ${data.name}, ${data.country}.`
+          `Successfully fetched weather which is  ${data.name}, ${data.country}.`
         );
 
         setWeather(data);
@@ -52,8 +52,8 @@ function App() {
           <TimeAndLocation weather={weather} />
           <TemperatureAndDetails weather={weather} />
 
-          <Forecast title='hourly forecast' items={weather.hourly} />
-          <Forecast title='daily forecast' items={weather.daily} />
+          <Forecast title='hourly forecast choosen' items={weather.hourly} />
+          <Forecast title='daily forecast choosen' items={weather.daily} />
         </div>
       )}
 
